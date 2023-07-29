@@ -1,0 +1,21 @@
+{
+  "name": "OpenRoutingEngine",
+  "version": "0.0.1",
+  "description": "Open-source routing engine written in TypeScript. Utilizes modern AI algorithms for route optimization and pathfinding in transportation and logistics.",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TransitAIOptimizer/open-routing-engine"
+  },
+  "author": "Dmitry Gorschkov",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TransitAIOptimizer/open-routing-engine/issues"
+  },
+  "homepage": "https://github.com/TransitAIOptimizer/open-routing-engine#readme",
+  "dependencies": {},
+  "devDependencies": {}
+}
