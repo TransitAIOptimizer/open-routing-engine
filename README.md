@@ -32,6 +32,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Your Name - example@example.com
+Dmitry Gorschkov - logicleviathan@gmail.com
 
 Project Link: [https://github.com/TransitAIOptimizer/open-routing-engine](https://github.com/TransitAIOptimizer/open-routing-engine)
