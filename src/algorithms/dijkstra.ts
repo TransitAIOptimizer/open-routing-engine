@@ -32,12 +32,19 @@ export class Dijkstra {
 
       const cost = costs[node];
       const children = this.graph.getNeighbors(node);
-
+      console.log(`Children of ${node}:`, children);
       for (const n in children) {
         const newCost = cost + children[n].weight;
         const childNode = children[n].vertex;
 
-        if (!costs[childNode] || costs[childNode] > newCost) {
+        console.log(
+          `Evaluating edge from ${node} to ${childNode}. Current cost: ${costs[childNode]}, new cost: ${newCost}`,
+        );
+
+        if (costs[childNode] === Infinity || costs[childNode] > newCost) {
+          console.log(
+            `Updating cost of ${childNode} from ${costs[childNode]} to ${newCost}`,
+          );
           costs[childNode] = newCost;
           parents[childNode] = node;
         }
@@ -65,6 +72,7 @@ export class Dijkstra {
     return Object.keys(costs).reduce((lowest: string | null, node: string) => {
       if (lowest === null || costs[node] < costs[lowest]) {
         if (!processed.includes(node)) {
+          console.log(`Choosing ${node} as lowest cost node.`);
           lowest = node;
         }
       }

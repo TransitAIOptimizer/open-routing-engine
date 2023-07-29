@@ -25,8 +25,25 @@ export class Graph {
     return vertex in this.adjacencyList;
   }
 
-  // Method to add an edge to the graph
   addEdge(edge: Edge) {
+    // Check if both vertices exist in the graph, add them if not
+    if (!this.adjacencyList[edge.vertex1]) {
+      this.adjacencyList[edge.vertex1] = [];
+    }
+    if (!this.adjacencyList[edge.vertex2]) {
+      this.adjacencyList[edge.vertex2] = [];
+    }
+
+    // Add edge to the adjacency list
+    this.adjacencyList[edge.vertex1].push({
+      vertex: edge.vertex2,
+      weight: edge.weight,
+    });
+
+    // If the graph is undirected, you should also add the inverse edge
+    // this.adjacencyList[edge.vertex2].push({ vertex: edge.vertex1, weight: edge.weight });
+
+    // Keep track of the edges and vertices
     this.edges.push(edge);
     this.vertices.add(edge.vertex1);
     this.vertices.add(edge.vertex2);
