@@ -4,7 +4,8 @@
   "description": "Open-source routing engine written in TypeScript. Utilizes modern AI algorithms for route optimization and pathfinding in transportation and logistics.",
   "main": "index.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --exec ts-node -- src/index.ts"
   },
   "repository": {
     "type": "git",
@@ -16,6 +17,16 @@
     "url": "https://github.com/TransitAIOptimizer/open-routing-engine/issues"
   },
   "homepage": "https://github.com/TransitAIOptimizer/open-routing-engine#readme",
-  "dependencies": {},
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/node": "^20.4.5",
+    "@typescript-eslint/eslint-plugin": "^6.2.0",
+    "@typescript-eslint/parser": "^6.2.0",
+    "eslint": "^8.46.0",
+    "eslint-config-prettier": "^8.9.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "nodemon": "^3.0.1",
+    "prettier": "^3.0.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
+  }
 }
