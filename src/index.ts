@@ -1,28 +1,43 @@
-import { Graph, Edge } from './graph/graph';
 import { Dijkstra } from './algorithms/dijkstra';
+import { Graph, Edge } from './graph/graph';
+import { uploadOsmFileAndProcessGraph } from './graphService';
 
-const graph = new Graph();
-graph.addVertex('A');
-graph.addVertex('B');
-graph.addVertex('C');
-graph.addVertex('D');
-graph.addVertex('E');
-graph.addVertex('F');
+async function main() {
+  const graphLoad = await uploadOsmFileAndProcessGraph(
+    '/home/dmitry/transitaioptimiser/open-routing-engine/map.osm',
+  );
 
-graph.addEdge(new Edge('A', 'B', 1));
-graph.addEdge(new Edge('A', 'C', 3));
-graph.addEdge(new Edge('B', 'C', 2));
-graph.addEdge(new Edge('C', 'D', 4));
-graph.addEdge(new Edge('B', 'D', 8));
-graph.addEdge(new Edge('E', 'D', 2));
-graph.addEdge(new Edge('E', 'F', 3));
-graph.addEdge(new Edge('B', 'F', 7));
-graph.addEdge(new Edge('F', 'C', 5));
-graph.addEdge(new Edge('D', 'F', 1));
+  if (!graphLoad) {
+    console.error('Failed to process graph');
+    return;
+  }
 
-const dijkstra = new Dijkstra(graph);
-const shortestPath = dijkstra.findShortestPath('A', 'F');
+  const graph = new Graph();
 
-console.log(shortestPath);
+  const realData = graphLoad; // Здесь подразумевается, что функция loadRealData уже определена где-то в вашем коде
+  console.log('REALDATA ===', realData);
+  // realData.nodes.features.forEach((node) => {
+  //   graph.addVertex(node.id);
+  // });
+  //
+  // realData.edges.features.forEach((edge) => {
+  //   graph.addEdge(new Edge(edge.source, edge.target, edge.weight));
+  // });
 
-console.log('Shortest path from A to D: ', shortestPath.join(' -> '));
+  // теперь вы можете использовать полученный граф как обычно
+  const dijkstra = new Dijkstra(graph);
+
+  console.log('Dijkstra ===', dijkstra);
+
+  console.time('Dijkstra algorithm execution');
+  const startNodeID = '567058794'; // This should be a valid node ID from your graph
+  const endNodeID = '10804810280'; // This should be a valid node ID from your graph
+
+  const shortestPath = dijkstra.findShortestPath(startNodeID, endNodeID);
+  console.timeEnd('Dijkstra algorithm execution');
+
+  console.log(shortestPath);
+  console.log('Shortest path from: ', shortestPath.join(' -> '));
+}
+
+main();
